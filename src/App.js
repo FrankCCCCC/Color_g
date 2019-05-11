@@ -27,7 +27,7 @@ export default class App extends React.Component {
   componentWillMount(){
     this.store = createStore(color);
     store.subscribe(()=>{
-      console.log(store.getState());
+      console.log("APP ", store.getState());
     });
     store.dispatch(setColor());
     
@@ -41,7 +41,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <div>
         <Navi />
-        <Board color = {store.getState()}/>
+        <Board /*color = {store.getState()}*/ />
         <Deck />
         <Reset />
         <div className="App">

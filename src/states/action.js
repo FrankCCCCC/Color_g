@@ -1,8 +1,12 @@
 
 export function setColor(){
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    const rgb = "rgb(" + r + ", " + g + ", " + b + ")";
     return {
         type: '@ACT/SETCOLOR',
-        color: Math.floor(Math.random() * 255)
+        color: rgb
     };
 }
 

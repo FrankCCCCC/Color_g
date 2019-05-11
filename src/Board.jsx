@@ -11,50 +11,54 @@ import store from './states/store';
 class Board extends React.Component{
     constructor(props){
         super(props);
-        
-        this.color = store.getState();
-        this.State = {
+        this.state = {
             color: store.getState()
         };
-        console.log("Board Props: ", this.props);
-        console.log("Board state: ", this.state);
-        console.log("Board: ", this.color);
-
-        store.subscribe(() => {
-            const newState = store.getState();
-            //this.props.color = store.getState();
-            console.log("Store in global ", store.getState());
-            console.log("Board Props: ", this.props);
-            console.log("Board State: ", this.state);
-            this.setState({
-                color: newState
-            });
-            //ReactDOM.render();
-        });
+        console.log("Board Props Construct: ", this.props);
+        console.log("Board state Construct: ", this.state);
     }
 
     static propTypes = {
-        color: PropTypes.number
+        color: PropTypes.string
     };
 
     render(){
+        console.log("Store in global ", store.getState());
+        console.log("Board Props: ", this.props);
+        console.log("Board State: ", this.state);
         return (
         <div>
-            <h1><Badge>{this.color}</Badge></h1>
+            <h1><Badge>{this.state.color}</Badge></h1>
         </div>
         );
     }
 
     componentWillMount(){
+        store.subscribe(() => {
+            this.setState({
+                color: store.getState()
+            });
+            
+        });
+    }
+    componentDidMount(){
         
     }
 }
 
-export default connect((state) => {
+function mapStateToProps(state){
     console.log("connect: ", state);
     console.log("connect State: ", state);
     return {
         ...state,
         color: state
     };
-})(Board);
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        dipatch: () => dispatch(setColor()),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
