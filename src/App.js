@@ -1,46 +1,60 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
-//import Button from '@material-ui/core/Button';
-//import Navi from './Navi.js';
-/*import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
-/*
-<Navbar color="light">
-        <NavbarBrand href="/">Color Game</NavbarBrand>
-</Navbar>*/
 import {Container, Row, Col, Card} from 'reactstrap';
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
+
 import Navi from './Navi.js';
 import Board from './Board.jsx';
 import Slot from './Slot.js';
 import Deck from './Deck.js';
+import Reset from './Reset.js';
+import {setColor} from './states/action';
+import {color} from './states/reducer';
+import store from './states/store';
 
-function App() {
-  return (
-    <div>
-      <Navi />
-      <Board />
-      <Deck />
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+export default class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.store = null;
+
+    this.store = null;
+    
+  }
+
+  componentWillMount(){
+    this.store = createStore(color);
+    store.subscribe(()=>{
+      console.log(store.getState());
+    });
+    store.dispatch(setColor());
+    
+
+    this.color = store.getState();
+    console.log("App color: ", this.color);
+  }
+  
+  render(){
+    return (
+      <Provider store={store}>
+        <div>
+        <Navi />
+        <Board color = {store.getState()}/>
+        <Deck />
+        <Reset />
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              Edit <code>src/App.js</code> and save to reload.
+            </p>
+          </header>
+        </div>
       </div>
-    </div>
-  );
+      </Provider>
+      
+    );
+  }
 }
-
-export default App;
