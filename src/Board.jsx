@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import {Badge} from 'reactstrap';
+import {Row, Col} from 'reactstrap';
 import {createStore} from 'redux';
 import {connect} from 'react-redux';
 
 import {setColor} from './states/action.js';
 import store from './states/store';
+import './Board.css';
 
 class Board extends React.Component{
     constructor(props){
@@ -27,9 +28,13 @@ class Board extends React.Component{
         console.log("Board Props: ", this.props);
         console.log("Board State: ", this.state);
         return (
-        <div>
-            <h1><Badge>{this.state.color}</Badge></h1>
-        </div>
+            <div class='board'>
+                <Row>
+                    <Col sm="12" md={{ size: 6, offset: 3 }}>
+                        <h1 class='pick'>{this.state.color}</h1>
+                    </Col>
+                </Row>
+            </div>
         );
     }
 

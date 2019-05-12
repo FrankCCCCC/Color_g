@@ -1,0 +1,10 @@
+.deck{
+    width: 70%;
+    height: 50%;
+    text-align: center;
+    
+}
+
+.innerDeck{
+    margin: 0 auto;
+}

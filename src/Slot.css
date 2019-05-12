@@ -1,0 +1,13 @@
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 50%;
+    border-radius: 20%;
+    border-color: rgb(255, 255, 255);
+}
+
+.card:after{
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
