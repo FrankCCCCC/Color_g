@@ -37,7 +37,7 @@ import {
                                 <NavLink href="/">About Us</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/">Source Code On GitHub</NavLink>
+                                <NavLink href="/">Source Code</NavLink>
                             </NavItem>
                             </Nav>
                         </Collapse>

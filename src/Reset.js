@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Button, Row, Col} from 'reactstrap';
-import {setColor} from './states/action.js';
-import store from './states/store.js';
+import {setColor, setColors} from './states/action.js';
+import {store, storeColors} from './states/store.js';
 
 export default class Reset extends React.Component{
     constructor(props){
@@ -29,6 +29,7 @@ export default class Reset extends React.Component{
 
     handleResetClick(){
         store.dispatch(setColor());
+        storeColors.dispatch(setColors(9));
         console.log("Reset Button cilck ");
     }
 }

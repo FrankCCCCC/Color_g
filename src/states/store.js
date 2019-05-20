@@ -1,7 +1,16 @@
-import {createStore} from 'redux';
-import {color} from './reducer.js';
+import {createStore, combineReducers} from 'redux';
+import {color, colors} from './reducer.js';
+
+/*
+const comRedu = combineReducers({
+    color,
+    colors
+});
+*/
 
 let store = createStore(color);
+let storeColors = createStore(colors);
 
 window.store = store;
-export default store;
+window.storeColors = storeColors;
+export {store, storeColors};

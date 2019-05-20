@@ -1,11 +1,13 @@
 .board{
     margin: 3rem;
+    text-align: center;
 }
 
 .pick{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    font-size: 3rem;
     text-align: center;
-    border-radius: 20%;
+    border-radius: 2rem;
     padding: 1rem;
 }
